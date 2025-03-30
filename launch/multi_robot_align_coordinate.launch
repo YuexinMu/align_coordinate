@@ -1,0 +1,33 @@
+<launch>
+
+    <arg name="anchor_robot" default="sct1"/>
+    <arg name="cur_robot" default="sct2"/>
+
+    <arg name="point_topic" default="cloud_registered_world"/>
+    <arg name="world_frame" default="world"/>
+    <arg name="connected_frame" default="map"/>
+    <arg name="align_odom_topic" default="map2world_odom"/>
+    <arg name="sample_duration" default="1.0"/>
+
+    <arg name="align_fitness_score_th" default="4.0"/>
+    <arg name="align_trans_score_th" default="5."/>
+
+    <group ns="$(arg cur_robot)">
+        <param name="anchor_robot_name" type="string" value="$(arg anchor_robot)"/>
+        <param name="anchor_point_topic" type="string" value="/$(arg anchor_robot)/$(arg point_topic)"/>
+
+        <param name="robot_name" type="string" value="$(arg cur_robot)"/>
+        <param name="cur_point_topic" type="string" value="/$(arg cur_robot)/$(arg point_topic)"/>
+        <param name="align_odom_topic" type="string" value="$(arg align_odom_topic)"/>
+
+        <param name="world_frame" type="string" value="$(arg world_frame)"/>
+        <param name="connected_frame" type="string" value="$(arg cur_robot)/$(arg connected_frame)"/>
+
+        <param name="sample_duration" type="double" value="$(arg sample_duration)"/>
+        <param name="align_fitness_score_th" type="double" value="$(arg align_fitness_score_th)"/>
+        <param name="align_trans_score_th" type="double" value="$(arg align_trans_score_th)"/>
+
+        <node name="align_coordinate" pkg="align_coordinate" type="align_coordinate" output="screen" />
+    </group>
+
+</launch>

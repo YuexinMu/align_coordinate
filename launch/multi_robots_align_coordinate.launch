@@ -1,0 +1,18 @@
+<launch>
+
+    <arg name="robot1_name" default="sct1"/>
+    <arg name="robot2_name" default="sct2"/>
+
+    <arg name="anchor_robot" default="$(arg robot1_name)"/>
+    <!--   robot1   -->
+    <include file="$(find align_coordinate)/launch/multi_robot_align_coordinate.launch">
+        <arg name="anchor_robot" value="$(arg anchor_robot)"/>
+        <arg name="cur_robot" value="$(arg robot1_name)"/>
+    </include>
+
+    <!--   robot2   -->
+    <include file="$(find align_coordinate)/launch/multi_robot_align_coordinate.launch">
+        <arg name="anchor_robot" value="$(arg anchor_robot)"/>
+        <arg name="cur_robot" value="$(arg robot2_name)"/>
+    </include>
+</launch>
