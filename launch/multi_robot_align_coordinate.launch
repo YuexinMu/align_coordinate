@@ -1,7 +1,9 @@
 <launch>
 
+    <arg name="cur_robot" default="$(env ROBOT_NAME)" doc="Robot type [sct]"/>
     <arg name="anchor_robot" default="sct1"/>
-    <arg name="cur_robot" default="sct2"/>
+
+<!--     <arg name="cur_robot" default="sct2"/> -->
 
     <arg name="point_topic" default="cloud_registered_world"/>
     <arg name="world_frame" default="world"/>
