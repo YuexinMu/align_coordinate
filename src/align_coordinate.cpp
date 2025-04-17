@@ -21,6 +21,10 @@ bool AlignCoordinate::Init(ros::NodeHandle &nh) {
   nh.param<std::string>("cur_point_topic", cur_point_topic_, "no_cur_point_topic");
   nh.param<std::string>("align_odom_topic", odom_topic_, "map2world_odom");
 
+  nh.param<double>("init_x", init_x_, 0.0);
+  nh.param<double>("init_y", init_y_, 0.0);
+  nh.param<double>("init_z", init_z_, 0.0);
+
   nh.param<std::string>("/world_frame", world_frame_, "world");
   nh.param<std::string>("connected_frame", connected_frame_, "map");
 
@@ -186,6 +190,11 @@ void AlignCoordinate::CurPointCallBack(const sensor_msgs::PointCloud2::ConstPtr 
     return;
   } else{
     if(align_coordinate_already_){
+      SendTrans(msg->header.stamp.toSec());
+    } else{
+      T_anchor_cur_.translation().x() = init_x_;
+      T_anchor_cur_.translation().y() = init_y_;
+      T_anchor_cur_.translation().z() = init_z_;
       SendTrans(msg->header.stamp.toSec());
     }
   }

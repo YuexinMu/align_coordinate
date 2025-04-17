@@ -55,6 +55,9 @@ private:
   std::string odom_topic_;
 
   double pub_frequency_;
+  double init_x_;
+  double init_y_;
+  double init_z_;
   double sample_duration_;
   double align_fitness_score_th_;
   double align_trans_score_th_;

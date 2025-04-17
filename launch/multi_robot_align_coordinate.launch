@@ -10,9 +10,12 @@
     <arg name="connected_frame" default="map"/>
     <arg name="align_odom_topic" default="map2world_odom"/>
     <arg name="sample_duration" default="1.0"/>
+    <arg name="init_x" default="0.0"/>
+    <arg name="init_y" default="0.0"/>
+    <arg name="init_z" default="0.0"/>
 
-    <arg name="align_fitness_score_th" default="4.0"/>
-    <arg name="align_trans_score_th" default="5."/>
+    <arg name="align_fitness_score_th" default="10.0"/>
+    <arg name="align_trans_score_th" default="5.0"/>
 
     <group ns="$(arg cur_robot)">
         <param name="anchor_robot_name" type="string" value="$(arg anchor_robot)"/>
