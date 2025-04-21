@@ -7,7 +7,7 @@
 
     <arg name="point_topic" default="cloud_registered_world"/>
     <arg name="world_frame" default="world"/>
-    <arg name="connected_frame" default="odom"/>
+    <arg name="connected_frame" default="map"/>
     <arg name="align_odom_topic" default="map2world_odom"/>
     <arg name="sample_duration" default="1.0"/>
     <arg name="init_x" default="1.0"/>
